@@ -259,5 +259,48 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-2.2.4.min.js"><\/script>')</script>
 <script src="assets/js/functions-min.js"></script>
+<style>
+  .snowflake {
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    background-color: #fff;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: fall linear infinite;
+  }
+
+  @keyframes fall {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(100vh);
+    }
+  }
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const numberOfSnowflakes = 50;
+
+    for (let i = 0; i < numberOfSnowflakes; i++) {
+      createSnowflake();
+    }
+
+    function createSnowflake() {
+      const snowflake = document.createElement('div');
+      snowflake.className = 'snowflake';
+
+      const startX = Math.random() * window.innerWidth;
+      const startY = Math.random() * window.innerHeight;
+
+      snowflake.style.left = startX + 'px';
+      snowflake.style.top = startY + 'px';
+
+      document.body.appendChild(snowflake);
+    }
+  });
+</script>
+
 </body>
 </html>
